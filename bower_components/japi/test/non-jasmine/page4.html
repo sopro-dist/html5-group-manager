@@ -1,0 +1,87 @@
+<html ng-app="myApp">
+<head>
+	<title>Page 3</title>
+	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<style type="text/css">
+	#ApiTestController {
+		border: 1px solid #888;
+		background: #FEF;
+		padding: 30px;
+	}
+	ul li {
+		padding: 0px;
+	}
+	</style>
+</head>
+<body class="container">
+	<h1>Non jasmine testing / page 4</h1>
+	
+	<p><a href="index.html" >Go index</a></p>
+	<p><a href="../test.html" >Jasmine tests</a></p>
+
+	<h4>Angular tests</h4>
+	<div ng-controller="ApiTestController" id="ApiTestController">
+		<p>{{greeting}}</p>
+
+		<div class="pull-right">
+			<button ng-click="Reload()">Reload</button>
+		</div>
+
+		<strong>Groups</strong>
+		<ul>
+			<li ng-repeat="group in Cambrian.me.groups track by group.id">
+				<button ng-click="group.destroy()">Destroy</button>
+				{{group.name}} - <i>type</i> {{group.type}}
+			</li>
+		</ul>
+
+		<strong>Peer lists</strong>
+		<ul>
+			<li ng-repeat="group in Cambrian.me.peerLists">{{group.name}}</li>
+		</ul>
+
+		<strong>Data binding test</strong>
+		<ul>
+			<li ng-repeat="chore in chores.list">{{chore}}</li>
+		</ul>			
+
+		<button ng-click="Add()">Add via angular</button>
+		<button onclick="Add()">Add via normal js</button>
+
+
+		<br/>
+		<br/>
+		<strong>Roles tests (total roles = {{Cambrian.capi.roles.list().length}} )</strong>
+		<ul>
+			<li ng-repeat="role in Cambrian.capi.roles.list()">
+				<button ng-click="Cambrian.capi.roles.current = role;">roles.current = </button>
+				<strong> [ {{role.name}} ] </strong>
+			</li>
+			<li>
+				<button ng-click="Cambrian.capi.roles.current = undefined;">roles.current = </button>
+				undefined
+			</li>
+			<li>
+				<button ng-click="Cambrian.capi.roles.current = null;">roles.current = </button>
+				null
+			</li>
+			<li>
+				<button ng-click="Cambrian.capi.roles.current = 'a string';">roles.current = </button>
+				"a string"
+			</li>
+			<li>
+				<button ng-click="Cambrian.capi.roles.current = Cambrian.me.groups[0];">roles.current = </button>
+				oGroup [ {{Cambrian.me.groups[0].name}} ]
+			</li>
+		</ul>
+
+		<strong>Browsers</strong>
+		<ul>
+			<li ng-repeat="brw in Cambrian.capi.roles.current.browsers.listBrowsers()">[ {{$index}} ] ==> {{brw.title}}</li>
+		</ul>
+	</div>
+	
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<script src="page4.js" type="text/javascript"></script>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "roboto",
+  "homepage": "https://github.com/sopro-components/roboto",
+  "_release": "fc5d3ed13a",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fc5d3ed13abff3504ef9ae93082cac7df89b41f3"
+  },
+  "_source": "https://github.com/sopro-components/roboto.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/sopro-components/roboto.git"
+}
