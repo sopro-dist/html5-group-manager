@@ -1,0 +1,36 @@
+.mainContainer { 
+	background: url(../assets/bg.jpg) top right no-repeat;
+	background-attachment: fixed;
+}
+.mainContainer.corps { 
+	background: url(../assets/bgCorps.jpg) top right no-repeat;
+	background-attachment: fixed;
+}
+.cardholder {
+	opacity: 0.9;
+}
+material-toolbar {
+	background-color: #4f738e;	
+	color:white;
+}
+material-card.groupCard{
+  background-color: #BCC6CC;
+}
+.navToolbar {
+	background-color: #728fa5;
+	color: black;	
+}
+material-sidenav {
+	background-color: rgba(255,255,255,0.4);
+	min-width: 210px;
+	max-width: 210px;
+	width: 100%;
+}
+.menu-item {
+	color: black;
+	margin-top: 15px;
+	font-weight: bold;
+}
+.material-button-inner:hover {
+	background-color: gray;
+}

@@ -93,9 +93,19 @@ core-icon-button:focus{
 }
 
 #viewButtons {
+  margin: 8px 18px 0px 18px;
+}
+
+.viewButton {
+  border: 1px solid rgba(0,0,0,0.2);
   height: 48px;
-  float: right;
-  margin: 0 18px;
+  width: 53px;
+}
+.viewButton.active {
+  background-color: rgba(0,0,0,0.1);
+}
+.viewButton.inactive {
+  opacity: 0.5;
 }
 
 .menu-icon {
@@ -131,6 +141,9 @@ core-icon-button:focus{
   box-sizing: border-box;
   padding: 8px;
   line-height: 24px;
+  background-color: rgba(255,255,255,0.9);
+  margin-top: 4px;
+  margin-bottom: 14px;
 }
 
 #quickAddTitle {
@@ -168,9 +181,21 @@ core-icon-button:focus{
 #myGroupsContainer{
   padding-bottom: 100px;
 }
+
 .cardholder {
   display: inline-block;
+  vertical-align: top;
   position: relative;
+}
+.quilt {
+  display: inline-block;
+}
+.stream {
+  width:100%;
+}
+.stream material-card {
+  width: 95%;
+  max-width: none;
 }
 
 #addGroupCardButton {
@@ -362,3 +387,132 @@ material-toolbar {
   .material-toolbar-tools material-button {
     font-size: 16px; }
 */
+material-toolbar {
+  min-height: 48px;
+  height: 48px;
+}
+.menu-icon {
+  top: 0;
+  margin-top: -14px;
+  margin-left: 18px;
+  margin-right: 9px;
+  cursor: pointer;
+}
+#toolTitle {
+  margin-bottom: 20px;
+  font-size: 15px;
+  margin-left: 0px;
+}
+.viewButton {
+  border: 1px solid rgba(0,0,0,0.2);
+  height: 26px;
+  width: 35px;
+  margin-top: 3px;
+}
+.viewButton:hover {
+  opacity: 1;
+}
+#streamButton:hover {
+  background: none;
+}
+#quiltButton:hover {
+  background: none;
+}
+.viewButton button img {
+  margin-top: -3px;
+  margin-left: -1px;
+}
+.appVersion p {
+  color: slategray;
+  background-color: white;
+  margin-bottom: 0px;
+  padding: 10px;
+}
+.material-dialog-container material-dialog {
+  width:  50%;
+}
+material-ink-bar {
+  background: black;
+}
+material-checkbox {
+  margin:0px;
+}
+.tab1 {
+  padding:15px;
+}
+material-checkbox:focus .material-label {
+  border-color:transparent;
+}
+.checkLabel {
+  margin: 0px 5px;
+  margin-top: 5px;
+}
+.options p{
+  margin:0px;
+  font-size: 13px;
+}
+::-webkit-scrollbar {  
+    width: 12px; 
+}  
+::-webkit-scrollbar-track {  
+    background-color: rgba(234,234,234,0.2);
+}  
+::-webkit-scrollbar-thumb {  
+    background-color: #ccc;  
+}  
+::-webkit-scrollbar-thumb:hover {  
+    background-color: #aaa;  
+}
+.inputInside input {
+  border: 1px solid slategray;
+  width: 35px;
+  text-align: center;
+}
+.alliance {
+  background-color: #5B391E !important;
+  color: white;
+}
+material-checkbox .material-icon {
+  margin-top: 3px;
+}
+material-checkbox {
+  margin: 1px;
+}
+.newRuleWrapper {
+margin: 16px 0;
+}
+#addRuleInput {
+  background-image: url(../material-icons/icons/system_icons/content/res/1x_web/ic_add_18dp.png);
+  background-repeat: no-repeat;
+  text-indent: 20px;
+}
+#addRuleInput {
+  line-height: 15px;
+  margin: 5px 0;
+}
+.rulesLine.focused {
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+}
+.newRuleWrapper.focused {
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+}
+.ruleInput {
+  height: 28px;
+  width: 35px;
+  text-align: center;
+  border: 1px solid gray !important;
+  margin: 0px 5px;
+  display: inline-block;
+}
+.rulesLine p {
+  margin: 0px;
+  display: inline-block;
+  border-width: 0px 0px 1px 0px;
+  line-height: 30px;
+  font-size: 0.85em;
+  vertical-align: baseline;
+  color: black;
+  border-bottom: 1px solid rgb(233, 233, 233);  
+}

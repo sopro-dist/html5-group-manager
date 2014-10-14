@@ -1,0 +1,139 @@
+<div id="applicationContainer" layout="horizontal" layout-fill>
+
+      <material-sidenav class="material-sidenav-left material-whiteframe-z2" component-id="left" layout="vertical">
+        <material-toolbar class="navToolbar">
+          <h1 id="navMenuTitle" class="material-toolbar-tools">Society Pro</h1>
+          <span flex></span>
+        </material-toolbar>
+        <material-content>
+          <div>
+            <material-button block class="menu-item menu-sub-item" ng-repeat="group in menu.groups" ng-class="{active: menu.isGroupSelected(group)}" ng-click="menu.selectGroup(group); $event.stopImmediatePropagation()">
+              <span ng-bind="group"></span>
+              <material-ripple initial-opacity="0.4" opacity-decay-velocity="1.75"></material-ripple>
+            </material-button>
+          </div>
+        </material-content>
+        <span flex></span>
+        <div class="appVersion">
+          <p>Group Manager version: 0.1.2</p>
+        </div>
+      </material-sidenav>
+
+      <div layout="vertical" layout-fill class="mainContainer">
+        <material-toolbar scroll-shrink>
+          <div layout="horizontal">
+            <div class="material-toolbar-tools">
+              <div class="menu-icon" ng-click="toggleMenu()">
+                <img src="material-icons/icons/system_icons/navigation/res/1x_web/ic_menu_wht_24dp.png">
+              </div>
+              <h2 id="toolTitle">Groups & Governance</h2>
+            </div>
+            <div id="viewButtons" layout="horizontal" layout-align="end">
+              <material-button id="streamButton" class="viewButton material-button-icon" ng-class="{active: listView === 'stream', inactive: listView === 'quilt'}" ng-click="streamView()">
+                <img src="material-icons/icons/system_icons/action/res/1x_web/ic_view_stream_wht_24dp.png">
+              </material-button>
+              <material-button id="quiltButton" class="viewButton material-button-icon" ng-class="{active: listView === 'quilt', inactive: listView === 'stream'}" ng-click="quiltView()">
+                <img src="material-icons/icons/system_icons/action/res/1x_web/ic_view_quilt_wht_24dp.png">
+              </material-button>
+            </div>
+          </div>
+        </material-toolbar>
+        <div class="content-padding" layout="vertical" flex>
+
+          <material-card id="quickAddBox">
+            <form name="quickAddForm" style="padding-left:20px;">
+            <!--
+              <material-input-group>
+                <label for="quickAddTitle">Add a group...</label>
+              </material-input-group>
+            -->
+              <material-input 
+              name="quickAddTitle" 
+              id="quickAddTitle" 
+              type="text" 
+              size="45" 
+              ng-model="newGroupTitle"
+              placeholder="Add a Group..."
+              flex ng-click="inputClick = true"></material-input>
+              <div id="quickAddAdditional" ng-show="inputClick">
+                <div class="custom-dropdown small">
+                  <select ng-model="newGroupType">
+                    <option value="">-- Type --</option>
+                    <option ng-repeat="groupType in groupTypes" value="{{groupType}}">{{groupType}}</option>
+                  </select>
+                </div>
+                <material-button id="quickAddButton" class="material-button-colored" ng-show="newGroupTitle" ng-click="newGroup()">
+                  SAVE
+                </material-button>
+              </div>
+            </form>
+          </material-card>
+          <!-- Quick Add Box original 
+          <sopro-titlebar>
+              <div id="quickAddAdditional" ng-show="quickAddForm.$dirty">
+              <select ng-model="newGroupType" ng-options="groupType for groupType in groupTypes"></select>
+              <material-button id="quickAddButton" class="material-button-colored" ng-show="quickAddForm.$dirty" ng-click="newGroup()">
+                SAVE
+              </material-button>
+            </div>
+          </sopro-titlebar>
+          end Quick Add Box -->
+
+          <!-- 
+          <material-content 
+          ng-class="{'groupListsContainer':true, 'quiltView':listView === 'quilt', 'streamView':listView === 'stream'}" 
+          scroll-y flex>
+          -->
+          <material-content id="contentArea" flex>
+            <div id= "myGroupsContainer" ng-if="listContains === 'myGroups'">
+              <!-- material-card for groups -->  
+              <div class="cardholder" 
+              ng-repeat="group in myGroups"
+              ng-mouseleave="group.overflow = false;"
+              ng-class="{quilt:listView == 'quilt', stream:listView == 'stream'}"
+              >
+                <material-card 
+                class="groupCard" 
+                layout="vertical"
+                ng-click="dialog($event, group)">
+                  <div flex>
+                    <h3>{{group.name}}</h3>
+                    <div class="lightDetails" layout="horizontal">
+                      <span flex class='groupType'> {{group.type}} </span>
+                      <img ng-src="material-icons/icons/system_icons/social/res/1x_web/ic_group_18dp.png"> 
+                      <span class="groupMemberLength"> {{group.members.length}} </span>
+                    </div>
+                  </div>
+                  
+                <div class="cardMenuBar" 
+                  layout="horizontal" 
+                  layout-align="end center">
+                    <material-button 
+                    class="overflowMenuButton material-button-icon" 
+                    ng-click="overflowToggle(group); $event.stopPropagation()"
+                    layout="horizontal"
+                    layout-align="center center" 
+                    >
+                      <img 
+                      class="overflowMenuIcon"
+                      ng-src="material-icons/icons/system_icons/action/res/1x_web/ic_drawer_wht_18dp.png">
+                    </material-button>
+                  </div>
+
+                </material-card>
+                <material-card class="overflowMenu animate-show" ng-show="group.overflow">
+                  <a block class="overflowDuplicate"
+                  ng-click="duplicateGroup(group)">Duplicate Group</a>
+                  <a block class="overflowDelete"
+                  ng-click="deleteGroup(group)">Delete Group</a>
+                </material-card>
+              </div>
+            </div>
+          </material-content>
+        </div>
+      </div>
+
+    </div>
+    <script>
+      
+    </script>
