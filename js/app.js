@@ -52,7 +52,13 @@ appModule = angular.module("app", ['ngRoute','ngMaterial'])
   $scope.menu.selectGroup(menu.groups[0]);
   document.title = "Gourps and Governance";
   $scope.myPeers = japi.me.peers;
-  $scope.myGroups = japi.me.groups;
+  var groups = japi.me.groups;
+  $scope.myGroups = [];
+  for (var i = 0; i < groups.length; i++) {
+    if (groups[i].type != "channel") {
+      $scope.myGroups.push(groups[i]);
+    }
+  };
   $scope.myPeerLists = japi.me.peerLists;
   $scope.groupTypes = GROUP_TYPES;
   $scope.inputClick = false;
