@@ -26,7 +26,7 @@ appModule = angular.module("app", ['ngRoute','ngMaterial'])
     controller: "corpsCtrl"
   }).
   otherwise({
-    redirectTo: "/groups"
+    redirectTo: "/corps"
   });
 })
 .factory("menu", ['$rootScope', function ($rootScope) {

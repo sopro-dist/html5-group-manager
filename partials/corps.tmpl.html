@@ -6,12 +6,7 @@
           <span flex></span>
         </material-toolbar>
         <material-content>
-          <div>
-            <material-button block class="menu-item menu-sub-item" ng-repeat="group in menu.groups" ng-class="{active: menu.isGroupSelected(group)}" ng-click="menu.selectGroup(group); $event.stopImmediatePropagation()">
-              <span ng-bind="group"></span>
-              <material-ripple initial-opacity="0.4" opacity-decay-velocity="1.75"></material-ripple>
-            </material-button>
-          </div>
+          
         </material-content>
         <span flex></span>
         <div class="appVersion">
