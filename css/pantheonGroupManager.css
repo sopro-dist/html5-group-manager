@@ -1,10 +1,10 @@
 .mainContainer { 
 	background: url(../assets/bg.jpg) top right no-repeat;
-	background-attachment: fixed;
+	background-size: cover;
 }
 .mainContainer.corps { 
 	background: url(../assets/bgCorps.jpg) top right no-repeat;
-	background-attachment: fixed;
+	background-size: cover;
 }
 .cardholder {
 	opacity: 0.9;
