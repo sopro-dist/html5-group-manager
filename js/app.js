@@ -50,7 +50,7 @@ appModule = angular.module("app", ['ngRoute','ngMaterial'])
   
   $scope.menu = menu;
   $scope.menu.selectGroup(menu.groups[0]);
-  document.title = "Gourps and Governance";
+  document.title = "Private Groups";
   $scope.myPeers = japi.me.peers;
   var groups = japi.me.groups;
   $scope.myGroups = [];
@@ -59,9 +59,20 @@ appModule = angular.module("app", ['ngRoute','ngMaterial'])
       $scope.myGroups.push(groups[i]);
     }
   };
+  $scope.invites = [
+    {
+      name: "Hiro's Channel",
+      members: 4,
+    },
+    {
+      name: "Soccer Team",
+      members: 10,
+    },
+  ];
   $scope.myPeerLists = japi.me.peerLists;
   $scope.groupTypes = GROUP_TYPES;
   $scope.inputClick = false;
+  $scope.value = [false,true,true,false];
 
   for (var i=0; i < $scope.myGroups.length; i++) {
     $scope.myGroups[i].isActive = false;

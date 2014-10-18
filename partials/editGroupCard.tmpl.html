@@ -23,14 +23,27 @@
 
     <label for="groupTypeContainer">Group Type</label>
     
-    <div id="groupTypeContainer">
+    <div id="groupTypeContainer" >
       <div class="custom-dropdown small">
         <select 
         ng-model="newGroupType" 
         ng-options="groupType for groupType in groupTypes"></select>
       </div>
     </div>
-
+    <h3>Rulescape</h3>
+    <div layout="horizontal" class="rulesLine">
+            <material-checkbox ng-init="data.cb4=true" ng-model="data.cb4" aria-label="Checkbox 1"></material-checkbox>
+            <p flex>Only invites.</p>
+          </div>
+    <div class="rulesLine" ng-repeat="rule in group.rules" layout="horizontal"
+          ng-class="{focused: rule.hasFocus}" ng-mouseover="rule.menubar = true" ng-mouseleave="rule.menubar = false">
+            <material-checkbox ng-model="rule.isSelected"></material-checkbox>
+            <material-input type="text" class="rulesInput" ng-model="rule.text" flex placeholder="New Rule (click to edit)"  id="{{'rule'+$index}}" ng-keypress="keypressListener($event)" ng-focus="rule.hasFocus = true" ng-blur="rule.hasFocus = false" ng-keyup="checkForRuleDelete($event,$index)" ></material-input>
+            <material-button ng-show="rule.menubar" ng-click="removeRule($index)" title="Remove Rule"><img ng-src="material-icons/icons/system_icons/content/res/1x_web/ic_clear_18dp.png"></material-button>
+          </div>
+          <div class="newRuleWrapper" ng-class="{focused: newRuleFocused}">
+            <material-input type="text" id="addRuleInput" ng-model="newRuleText" ng-change="newRuleText = addRule(newRuleText)" placeholder="Add Rule" ng-focus="newRuleFocused = true" ng-blur="newRuleFocused = false"></material-input>
+          </div>
     <div flex layout="horizontal">
       <section flex="50" class="members" layout="vertical">
         <span block class="sectionTitle">Group Members</span>

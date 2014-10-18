@@ -21,7 +21,7 @@
               <div class="menu-icon" ng-click="toggleMenu()">
                 <img src="material-icons/icons/system_icons/navigation/res/1x_web/ic_menu_wht_24dp.png">
               </div>
-              <h2 id="toolTitle">Groups & Governance</h2>
+              <h2 id="toolTitle">Private Groups</h2>
             </div>
             <div id="viewButtons" layout="horizontal" layout-align="end">
               <material-button id="streamButton" class="viewButton material-button-icon" ng-class="{active: listView === 'stream', inactive: listView === 'quilt'}" ng-click="streamView()">
@@ -94,12 +94,56 @@
                   <div flex>
                     <h3>{{group.name}}</h3>
                     <div class="lightDetails" layout="horizontal">
-                      <span flex class='groupType'> {{group.type}} </span>
+                      <span flex class='groupType'> Private </span>
                       <img ng-src="material-icons/icons/system_icons/social/res/1x_web/ic_group_18dp.png"> 
                       <span class="groupMemberLength"> {{group.members.length}} </span>
                     </div>
                   </div>
                   
+                <div class="cardMenuBar" 
+                  layout="horizontal" 
+                  layout-align="end center">
+                    <material-button 
+                    class="overflowMenuButton material-button-icon" 
+                    layout="horizontal"
+                    layout-align="center center" 
+                    >
+                      <img 
+                      class="overflowMenuIcon"
+                      ng-src="material-icons/icons/system_icons/action/res/1x_web/ic_drawer_wht_18dp.png">
+                    </material-button>
+                  </div>
+
+                </material-card>
+                <material-card class="overflowMenu animate-show" ng-show="group.overflow">
+                  <a block class="overflowDuplicate"
+                  ng-click="duplicateGroup(group)">Duplicate Group</a>
+                  <a block class="overflowDelete"
+                  ng-click="deleteGroup(group)">Delete Group</a>
+                </material-card>
+              </div>
+               <div class="cardholder" 
+              ng-repeat="group in invites"
+              ng-mouseleave="group.overflow = false;"
+              ng-class="{quilt:listView == 'quilt', stream:listView == 'stream'}"
+              >
+                <material-card 
+                style="background-color:burlywood;"
+                class="groupCard" 
+                layout="vertical"
+                ng-click="dialog($event, group)">
+                  <div flex>
+                    <h3>{{group.name}}</h3>
+                    <div class="lightDetails" layout="horizontal">
+                      <span flex class='groupType'> Invitation </span>
+                      <img ng-src="material-icons/icons/system_icons/social/res/1x_web/ic_group_18dp.png"> 
+                      <span class="groupMemberLength"> {{group.members}} </span>
+                    </div>
+                  </div>
+                  <div layout="horizontal" class="joinBtn">
+                    <span flex></span>
+                    <material-button>Join</material-button>
+                  </div>
                 <div class="cardMenuBar" 
                   layout="horizontal" 
                   layout-align="end center">
