@@ -10,7 +10,7 @@
         </material-content>
         <span flex></span>
         <div class="appVersion">
-          <p>Group Manager version: 0.1.3</p>
+          <p>Group Manager version: 0.1.4</p>
         </div>
       </material-sidenav>
 
@@ -54,10 +54,10 @@
                 <div class="custom-dropdown small">
                   <select ng-model="newGroupType">
                     <option value="">-- Type --</option>
-                    <option ng-repeat="groupType in groupTypes" value="{{groupType}}">{{groupType}}</option>
+                    <option ng-repeat="groupType in groupTypes track by $index" value="{{groupType}}">{{groupType}}</option>
                   </select>
                 </div>
-                <material-button id="quickAddButton" class="material-button-colored" ng-show="newGroupTitle" ng-click="newGroup()">
+                <material-button id="quickAddButton" class="material-button-colored" ng-show="newGroupTitle" ng-click="newGroup($event)">
                   SAVE
                 </material-button>
               </div>
@@ -83,15 +83,15 @@
             <div id= "myGroupsContainer" ng-if="listContains === 'myGroups'">
               <!-- material-card for groups -->  
               <div class="cardholder" 
-              ng-repeat="group in myGroups"
+              ng-repeat="group in myGroups track by $index"
               ng-mouseleave="group.overflow = false;"
               ng-class="{quilt:listView == 'quilt', stream:listView == 'stream'}"
               >
                 <material-card 
                 class="groupCard" 
                 layout="vertical"
-                ng-click="dialog($event, group)">
-                  <div flex>
+                >
+                  <div flex ng-click="dialog($event, group)">
                     <h3>{{group.name}}</h3>
                     <div class="lightDetails" layout="horizontal">
                       <span flex class='groupType'> Private </span>
@@ -106,7 +106,8 @@
                     <material-button 
                     class="overflowMenuButton material-button-icon" 
                     layout="horizontal"
-                    layout-align="center center" 
+                    layout-align="center center"
+                    ng-click="group.overflow = !group.overflow" 
                     >
                       <img 
                       class="overflowMenuIcon"
@@ -117,13 +118,13 @@
                 </material-card>
                 <material-card class="overflowMenu animate-show" ng-show="group.overflow">
                   <a block class="overflowDuplicate"
-                  ng-click="duplicateGroup(group)">Duplicate Group</a>
+                  ng-click="duplicateGroup($event,group)">Duplicate Group</a>
                   <a block class="overflowDelete"
                   ng-click="deleteGroup(group)">Delete Group</a>
                 </material-card>
               </div>
                <div class="cardholder" 
-              ng-repeat="group in invites"
+              ng-repeat="group in invites track by $index"
               ng-mouseleave="group.overflow = false;"
               ng-class="{quilt:listView == 'quilt', stream:listView == 'stream'}"
               >

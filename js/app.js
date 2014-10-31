@@ -119,7 +119,7 @@ appModule = angular.module("app", ['ngRoute','ngMaterial'])
     group.overflow = !group.overflow;
   };
 
-  $scope.newGroup = function () {
+  $scope.newGroup = function (e) {
     //var groupToAdd = { name: $scope.newGroupTitle, groupType: $scope.newGroupType, members: []};
     if ($scope.newGroupType) {
       $scope.newGroupType = $scope.groupTypes[0];
@@ -129,19 +129,22 @@ appModule = angular.module("app", ['ngRoute','ngMaterial'])
     groupToAdd.type = $scope.newGroupType;
     groupToAdd.members = [];
     $scope.myGroups.push(groupToAdd);
+    groupToAdd.save();
     $scope.newGroupTitle = "";
     $scope.quickAddForm.$setPristine();
-    $scope.dialog(null, groupToAdd);
+    $scope.dialog(e, groupToAdd);
   };
 
-  $scope.duplicateGroup = function (group) {
+  $scope.duplicateGroup = function (e,group) {
     //var buildGroup = angular.copy(group);
-    var buildGroup = japi.groups.build(group);
+    var buildGroup = japi.groups.build('open');
     console.log(buildGroup);
-    buildGroup.name = buildGroup.name + " (Duplicate)";
+    buildGroup.name = group.name + " (Duplicate)";
+    buildGroup.type = group.type;
     buildGroup.overflow = false;
     $scope.myGroups.push(buildGroup);
-    group.overflow = false;
+    buildGroup.save();
+    $scope.dialog(e, groupToAdd);
   };
 
   $scope.deleteGroup = function (group) {

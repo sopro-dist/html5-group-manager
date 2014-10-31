@@ -49,7 +49,7 @@
         <span block class="sectionTitle">Group Members</span>
         <material-list flex>
           <material-item 
-          ng-repeat="member in group.members | orderBy:'id' | orderBy:'name'"
+          ng-repeat="member in group.members | orderBy:'id' | orderBy:'name' track by $index"
           class="membersAnimate"
           layout="horizontal"
           >
@@ -68,7 +68,7 @@
         <span block class="sectionTitle">Other Peers</span>
         <material-list flex>
           <material-item 
-          ng-repeat="peer in japi.me.peers | orderBy:'id' | orderBy:'name' | filter:nonMembers"
+          ng-repeat="peer in japi.me.peers | orderBy:'id' | orderBy:'name' | filter:nonMembers track by $index"
           class="peersAnimate"
           layout="horizontal"
           >
